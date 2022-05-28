@@ -18,9 +18,11 @@ class formController extends Controller
                 'follow' => 'required|in:sports, tech, events, management',
             ]);
             $data['ip'] = $request->ip();
-            $data['country'] = Location::get($request->ip())->countryName;
-            if(!$data['country']) {
+            if($data['ip'] === "127.0.0.1") {
                 $data['country'] = 'BOT';
+            } else {
+
+                $data['country'] = Location::get($request->ip())->countryName;
             }
             Subscriber::create($data);
             Mail::to('nadimouertani@hotmail.com')->send(new UserSubscribe($data));
