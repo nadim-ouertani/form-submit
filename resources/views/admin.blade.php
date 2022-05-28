@@ -42,16 +42,29 @@
     </style>
   </head>
   <body class="vh-100">
-    <form class="flex-center p-100" method="POST" action="{{route('form.submit')}}">
+    <form class="flex-center p-100" method="POST" action="{{route('campaign.launch')}}">
       @csrf
       <div class="flex-direction-column display-flex">
-       <input class="m-b-6" type="text" name="full_name" placeholder="Your name here" />
-       <input class="m-b-6" type="email" name="email" placeholder="Your email here" />
        <select class="m-b-6" name="follow">
-        <option value="sports">sports</option>
-        <option value="tech">tech</option>
-        <option value="events">events</option>
-        <option value="management">management</option>
+        <option value="all">ALL</option>
+        @foreach ($subscribers as $subscriber)
+        <option value="{{$subscriber->follow}}">{{$subscriber->follow}}</option>
+        @endforeach
+        <!-- TODO:: Add a new table with all the follow and linked to each user -->
+       </select>
+
+       <select class="m-b-6" name="country">
+        <option value="all">ALL</option>
+        @foreach ($subscribers as $subscriber)
+        <option value="{{$subscriber->country}}">{{$subscriber->country}}</option>
+        @endforeach
+       </select>
+
+       <select class="m-b-6" name="user">
+        <option value="all">ALL</option>
+        @foreach ($subscribers as $subscriber)
+        <option value="{{$subscriber->full_name}}">{{$subscriber->full_name}}</option>
+        @endforeach
        </select>
        <input type="submit" value="submit"/>
      </div>

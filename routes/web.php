@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\formController;
+use App\Http\Controllers\adminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/', [formController::class, 'storeNewSubscriber'])->name('form.submit');
+
+Route::get('/admin', [adminController::class, 'index']);
+
+Route::post('/admin', [adminController::class, 'launchCampaign'])->name('campaign.launch');
