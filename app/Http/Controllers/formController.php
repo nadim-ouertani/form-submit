@@ -18,7 +18,7 @@ class formController extends Controller
                 'follow' => 'required|in:sports, tech, events, management',
             ]);
             $data['ip'] = $request->ip();
-            $data['country'] = Location::get($request->ip());
+            $data['country'] = Location::get($request->ip())->countryName;
             if(!$data['country']) {
                 $data['country'] = 'BOT';
             }
