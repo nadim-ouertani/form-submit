@@ -1,3 +1,3 @@
 # Form submit application
 
-A sample form submit using TDD && SOLID
+A sample form submit using TDD && SOLID.
