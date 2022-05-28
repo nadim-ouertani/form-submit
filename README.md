@@ -2,7 +2,7 @@
 
 A sample form submit.
 
-# This is a bad for edu
+# This is a bad code for education purpose
 
 Next step is to convert this real life project to SOLID alos to add TDD and refactor the code!
 
